@@ -10,7 +10,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="icon" href="/knowledge/favicon32.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/knowledge/favicon32.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+
   <script src="https://cdn.jsdelivr.net/npm/viz.js@1.8.0/viz.js"></script>
   <!-- PDFObject.js is a required dependency of this plugin -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script>
@@ -56,17 +57,46 @@
   <!-- 回到顶部功能 -->
   <script src="https://cdn.jsdelivr.net/gh/wugenqiang/NoteBook@master/plugin/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/wugenqiang/NoteBook@master/plugin/jquery.goup.js"></script>
+  <!-- github上编辑  -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
 
   <script>
     window.$docsify = {
       name: 'mbw的知识库',
-      repo: 'https://github.com/mzbswh',
+      logo: '/favicon32.ico',
+      repo: 'https://github.com/mzbswh/knowledge',
       loadSidebar: true,
       loadNavbar: false,
-      maxLevel: 5,
-      subMaxLevel: 1,
-      mergeNavbar: true,
       coverpage: false,
+      maxLevel: 5,
+      subMaxLevel: 5,
+      mergeNavbar: true,
+
+      plugins: [
+        EditOnGithubPlugin.create('https://github.com/mzbswh/knowledge/blob/main/docs/', null,
+          function (file) {
+            if (file.indexOf('en') === -1) {
+              return '编辑'
+            }
+            else {
+              return 'edit on github'
+            }
+          }
+        ),
+        function (hook) {
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            '<span><a href="https://github.com/mzbswh">mzbswh</a> &copy;2024.</span>',
+            '<span>Proudly published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+            '</footer>'
+          ].join('');
+
+          hook.afterEach(function (html) {
+            return html + footer;
+          });
+        }
+      ],
 
       search: {
         paths: 'auto',
@@ -134,7 +164,7 @@
             return (base ? base : this.origin.code.apply(this, arguments));
           }
         }
-      }
+      },
 
       /*
             plugins: [
@@ -159,6 +189,8 @@
     }
   </script>
 
+  <!-- 显示目录 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <!-- 添加 PDF 页面展示功能 -->
   <!-- PDFObject.js is a required dependency of this plugin -->
