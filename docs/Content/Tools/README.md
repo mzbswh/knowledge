@@ -26,3 +26,4 @@
     - [Greasy](https://greasyfork.org/zh-CN)
     - [OpenUserJS](https://openuserjs.org)
   + [SMS](https://sms-activate.guru/cn) :&nbsp; 在线短信接收验证码平台
+  + [Vim-Adventures](https://vim-adventures.com) :&nbsp; 通过游戏的方式学习Vim
