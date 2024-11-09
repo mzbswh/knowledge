@@ -7,4 +7,3 @@
 * [编程语言](/Content/Program/)
 * [算法](/Content/Algorithm/)
 * [工具](/Content/Tools/)
-* [关于作者](/Content/AboutMe.md)
